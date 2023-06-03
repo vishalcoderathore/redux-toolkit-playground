@@ -1,47 +1,66 @@
-# React Boilerplate
+# Redux Toolkit Playground
 
-This is a React boilerplate code that provides a solid foundation for starting your React projects. It includes various tools and configurations to enhance your development experience.
+This application aims to understand the process of making network requests and, in general, fetching data within a Redux context. The application's user interface has been developed with Tailwind CSS for a clean, responsive design.
 
-## Technologies Included
+## Table of Contents
 
-### ESLint
-ESLint is a widely-used JavaScript linter that helps maintain a consistent code style and catch potential errors. It ensures your code adheres to a set of predefined rules and best practices, promoting code quality and readability.
+1. [Overview](#overview)
+2. [Package Description](#package-description)
+3. [Installation](#installation)
+4. [Scripts](#scripts)
+5. [Acknowledgments](#acknowledgments)
 
-### Prettier
-Prettier is an opinionated code formatter that enforces consistent code formatting across your project. It automatically formats your code to a predefined style, eliminating unnecessary debates about code formatting and ensuring a clean and consistent codebase.
+## Overview
 
-### Vite
-Vite is a fast, modern build tool for web applications. It enables rapid development with instant hot module replacement (HMR) and blazing fast builds. Vite maximizes the development speed by leveraging modern browser capabilities and optimized bundling techniques.
+When a user first visits the application, a network request is made to an outside API. This request fetches a list of users and displays them on the screen. A button is also provided to add new users. When clicked, a request is made to create a new user with a randomly generated name.
 
-### Husky
-Husky is a powerful Git hook manager that allows you to automate tasks and enforce quality control at different stages of your development workflow. It helps to ensure that certain scripts, such as linting and testing, are run automatically before committing or pushing code.
+Each user entry has a delete button, and an expand button that reveals a list of photo albums associated with the user. Each album also has an expand button that displays a collection of photos within the album.
 
-### lint-staged
-lint-staged is a tool that optimizes the linting process by running linters only on the staged files. It significantly reduces the time required for linting by focusing only on the files that are part of the current changeset. lint-staged integrates seamlessly with Git hooks and works well with Husky.
+The user names, album titles, and photos are all randomly generated. However, the randomly generated data is saved to an outside API for future retrieval.
 
-### TypeScript
-TypeScript is a typed superset of JavaScript that brings static typing to your codebase. It helps catch errors early, provides enhanced tooling support, and improves code maintainability. TypeScript enables you to write more reliable and scalable code by adding static types to JavaScript.
+All data is stored on an outside server using the JSON server library. The server houses lists of users, albums, and photos, fetched and stored in the Redux store. Once in the store, they're accessed by React Components and rendered as lists of users, albums, or photos.
 
-## Getting Started
+The application is designed with bandwidth-constrained users in mind, implementing a lazy fetching strategy that fetches data as it's needed, reducing the load for users on slower internet connections.
 
-To use this boilerplate code in your project, follow these steps:
+## Package Description
 
-1. Clone this repository to your local machine.
+The `package.json` includes several packages used in the development of this application. Here's a brief description of each package and its role:
 
-2. Navigate to the project's root directory.
+### Dependencies
+- `@faker-js/faker`: Used for generating fake data for testing or populating the UI during development.
+- `@reduxjs/toolkit`: The official, opinionated, batteries-included toolset for efficient Redux development.
+- `axios`: Promise based HTTP client for the browser and Node.js, used to make network requests.
+- `classnames`: A simple JavaScript utility for conditionally joining classNames together.
+- `json-server`: Used to create a fake REST API for development and testing.
+- `react` and `react-dom`: React is used for building the user interface of the app and ReactDOM manages the DOM in relation to that interface.
+- `react-icons`: Incorporate popular icons in the project from different icon libraries.
+- `tailwindcss`: A utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
 
-3. Open the `package.json` file and update the `"name"` field to your desired project name.
+### Dev Dependencies
+- `@typescript-eslint/eslint-plugin`, `eslint`, `eslint-config-prettier`, `eslint-import-resolver-typescript`, `eslint-plugin-import`, `eslint-plugin-jsx-a11y`, `eslint-plugin-prettier`, `eslint-plugin-react`, `eslint-plugin-react-hooks`: These packages are related to ESLint, which helps to enforce coding style and find and fix problems in the code.
+- `@vitejs/plugin-react` and `vite`: Vite is a modern frontend build tool, which is used here along with its React plugin for better development experience and fast hot module replacement.
+- `husky` and `lint-staged`: These packages are used for enforcing linting and formatting rules before commits.
+- `prettier`, `prettier-plugin-sort-imports`: Prettier is used for code formatting.
+- `typescript`: It is used for writing typed JavaScript at any scale.
 
-4. Install project dependencies by running the following command:
+## Installation
 
-5. Start the development server:
+To run this project, clone the repository and install the dependencies:
+- git clone https://github.com/vishalcoderathore/redux-toolkit-playground.git
+- cd redux-toolkit-playground
+- npm install
 
-This will launch the development server and you can access your React application in the browser at `http://localhost:3000`.
+## Scripts
 
-6. Begin building your React application by modifying the code and adding your components and logic.
+There are several scripts defined in `package.json`:
 
-Feel free to customize and extend this boilerplate code to suit the specific needs of your project.
+- `dev`: Runs the application in development mode.
+- `build`: Builds the application for production.
+- `lint`: Runs the linter to catch and fix issues in the code.
+- `format`: Formats the code using Prettier.
+- `preview`: Previews the built application.
+- `prepare`: Sets up Husky for Git hooks.
 
-## License
+## Acknowledgments
 
-This project is licensed under the [MIT License](LICENSE).
+This project was made possible by the Redux Toolkit, JSON Server library, the Faker JS library, and Tailwind CSS. Special thanks to these projects for making data fetching and handling in Redux and developing UI an enjoyable experience.

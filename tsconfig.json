@@ -23,5 +23,12 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "vite.config.ts", ".eslintrc.cjs", "lint-staged.config.cjs"]
+  "include": [
+    "src",
+    "vite.config.ts",
+    ".eslintrc.cjs",
+    "lint-staged.config.cjs",
+    "tailwind.config.js",
+    "postcss.config.js"
+  ]
 }
