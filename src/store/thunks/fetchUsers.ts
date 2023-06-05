@@ -12,5 +12,5 @@ export { fetchUsers };
 // DEV ONLY
 const pause = async (): Promise<void> => {
   // Simulating a delay of 7 seconds
-  await new Promise(resolve => setTimeout(resolve, 10000));
+  await new Promise(resolve => setTimeout(resolve, 1000));
 };
