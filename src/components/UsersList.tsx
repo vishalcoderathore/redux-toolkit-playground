@@ -41,7 +41,9 @@ const UsersList = (): ReactElement => {
     <div>
       <div className="flex flex-row justify-between m-3">
         <h1 className="m-2 text-xl ">Users</h1>
-        {isAddingUser ? 'Creating User ...' : <Button onClick={handleUserAdd}>+ Add User</Button>}
+        <Button loading={isAddingUser} onClick={handleUserAdd}>
+          + Add User
+        </Button>
         {addingUsersError && 'Error creating user'}
       </div>
       {renderedUsers}

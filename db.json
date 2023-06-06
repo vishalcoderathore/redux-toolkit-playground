@@ -1,22 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Gwendolyn Rath",
-      "id": 1
-    },
-    {
-      "name": "Van Keebler",
-      "id": 2
-    },
-    {
-      "name": "Frankie Klein Sr.",
-      "id": 3
-    },
-    {
-      "name": "Opal Walker-Ruecker",
-      "id": 4
-    }
-  ],
+  "users": [],
   "albums": [],
   "photos": []
 }

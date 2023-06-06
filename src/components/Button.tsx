@@ -1,5 +1,6 @@
 import React, { ButtonHTMLAttributes, ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { GoSync } from 'react-icons/go';
 import classNames from 'classnames';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -11,6 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   danger?: boolean;
   outline?: boolean;
   rounded?: boolean;
+  loading?: boolean;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -22,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({
   danger = false,
   outline = false,
   rounded = false,
+  loading = false,
   ...rest
 }) => {
   const primaryOrSecondarySelected = primary || secondary;
@@ -41,7 +44,8 @@ const Button: React.FC<ButtonProps> = ({
     throw new Error('Only one of outline or rounded prop should be provided');
   }
 
-  let classes = classNames(rest.className, 'flex items-center px-3 py-1.5 border', {
+  let classes = classNames(rest.className, 'flex items-center px-3 py-1.5 border h-8', {
+    'opacity-80': loading,
     'border-blue-500 bg-blue-500 text-white': primary,
     'border-gray-900 bg-gray-900 text-white': secondary,
     'border-green-500 bg-green-500 text-white': success,
@@ -59,8 +63,8 @@ const Button: React.FC<ButtonProps> = ({
   classes = twMerge(classes);
 
   return (
-    <button {...rest} className={classes}>
-      {children}
+    <button {...rest} className={classes} disabled={loading}>
+      {loading ? <GoSync className="animate-spin" /> : children}
     </button>
   );
 };
