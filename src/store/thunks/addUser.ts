@@ -3,6 +3,7 @@ import { faker } from '@faker-js/faker';
 import axios from 'axios';
 
 const addUser = createAsyncThunk('users/add', async () => {
+  await pause();
   const response = await axios.post('http://localhost:3001/users', {
     name: faker.person.fullName(),
   });
@@ -10,3 +11,9 @@ const addUser = createAsyncThunk('users/add', async () => {
 });
 
 export { addUser };
+
+// DEV ONLY
+const pause = async (): Promise<void> => {
+  // Simulating a delay of 7 seconds
+  await new Promise(resolve => setTimeout(resolve, 2000));
+};
