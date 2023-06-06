@@ -1,5 +1,26 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Tyler Gutkowski",
+      "id": 1
+    },
+    {
+      "name": "Crystal Kling",
+      "id": 2
+    },
+    {
+      "name": "Mr. Ted Hilpert",
+      "id": 3
+    },
+    {
+      "name": "Virgil Graham PhD",
+      "id": 4
+    },
+    {
+      "name": "Ms. Robyn Waters",
+      "id": 5
+    }
+  ],
   "albums": [],
   "photos": []
 }
