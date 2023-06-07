@@ -3,6 +3,7 @@ import ExpandablePannel from './ExpandablePannel';
 import { useThunk } from '../hooks/useThunk';
 import { GoTrashcan } from 'react-icons/go';
 import { removeUser } from '../store';
+import AlbumList from './AlbumList';
 import Button from './Button';
 import React from 'react';
 
@@ -27,7 +28,11 @@ const UsersListItem: React.FC<UsersListItemProps> = ({ user }) => {
     </>
   );
 
-  return <ExpandablePannel header={header}>CONTENT</ExpandablePannel>;
+  return (
+    <ExpandablePannel header={header}>
+      <AlbumList user={user} />
+    </ExpandablePannel>
+  );
 };
 
 export default UsersListItem;

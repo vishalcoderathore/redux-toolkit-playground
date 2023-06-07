@@ -51,15 +51,24 @@ const UsersList = (): ReactElement => {
   const userCount =
     data.length < 1 ? 'No Users, we need more!' : data.length === 1 ? '1 User found' : `${data.length} Users found`;
 
+  const topBar = isLoadingUsers ? (
+    <div className="flex flex-row justify-between items-center m-3">
+      <Skeleton times={1} className="h-10 w-1/12" />
+      <Skeleton times={1} className="h-10 w-1/12" />
+    </div>
+  ) : (
+    <div className="flex flex-row justify-between items-center m-3">
+      <h1 className="m-2 text-xl ">{userCount}</h1>
+      <Button loading={isAddingUser} onClick={handleUserAdd}>
+        + Add User
+      </Button>
+      {addingUsersError && 'Error creating user'}
+    </div>
+  );
+
   return (
     <div>
-      <div className="flex flex-row justify-between items-center m-3">
-        <h1 className="m-2 text-xl ">{userCount}</h1>
-        <Button loading={isAddingUser} onClick={handleUserAdd}>
-          + Add User
-        </Button>
-        {addingUsersError && 'Error creating user'}
-      </div>
+      {topBar}
       {content}
     </div>
   );
