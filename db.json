@@ -1,5 +1,22 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Dawn Torphy",
+      "id": 1
+    },
+    {
+      "name": "Leslie Schneider DDS",
+      "id": 2
+    },
+    {
+      "name": "Vincent West",
+      "id": 3
+    },
+    {
+      "name": "Israel Cronin",
+      "id": 4
+    }
+  ],
   "albums": [],
   "photos": []
 }
