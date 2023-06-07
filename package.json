@@ -11,7 +11,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "preview": "vite preview",
     "prepare": "husky install",
-    "server": "json-server -p 3001 --watch db.json"
+    "server": "json-server -p 3001 --watch db.json --middlewares ./middleware.cjs"
   },
   "dependencies": {
     "@faker-js/faker": "^8.0.2",

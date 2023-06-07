@@ -29,6 +29,7 @@
     ".eslintrc.cjs",
     "lint-staged.config.cjs",
     "tailwind.config.js",
-    "postcss.config.js"
+    "postcss.config.js",
+    "middleware.cjs"
   ]
 }
