@@ -1,5 +1,22 @@
 {
-  "users": [],
-  "albums": [],
+  "users": [
+    {
+      "name": "Mr. Simon Muller",
+      "id": 1
+    },
+    {
+      "name": "Della Brakus",
+      "id": 2
+    },
+    {
+      "name": "Brooke Reichel",
+      "id": 3
+    }
+  ],
+  "albums": [{
+    "id": 99,
+    "title": "Hiking trip",
+    "userId" : 1
+  }],
   "photos": []
 }

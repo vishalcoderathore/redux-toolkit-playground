@@ -21,7 +21,10 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+      /* Node.js type definitions */
+      "types": ["node"]
   },
   "include": [
     "src",
@@ -30,6 +33,7 @@
     "lint-staged.config.cjs",
     "tailwind.config.js",
     "postcss.config.js",
-    "middleware.cjs"
+    "middleware.cjs",
+    "config.ts"
   ]
 }

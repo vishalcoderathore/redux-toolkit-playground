@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import config from '../../../config';
 import axios from 'axios';
 
 const fetchUsers = createAsyncThunk('users/fetch', async () => {
   await pause();
-  const response = await axios.get('http://localhost:3001/users');
+  const response = await axios.get(`${config.baseUrl}/users`);
   return response.data;
 });
 
