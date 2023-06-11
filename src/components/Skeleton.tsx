@@ -4,7 +4,7 @@ import React from 'react';
 
 interface SkeletonProps {
   times: number;
-  className: string;
+  className?: string;
 }
 
 const Skeleton: React.FC<SkeletonProps> = ({ times, className }) => {

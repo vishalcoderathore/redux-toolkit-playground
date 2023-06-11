@@ -2,6 +2,13 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { UserType } from '../slices/usersSlice';
 import config from '../../../config';
 
+// Define the album type
+export interface AlbumType {
+  id: number;
+  title: string;
+  userId: number;
+}
+
 const albumsApi = createApi({
   reducerPath: 'albums',
   baseQuery: fetchBaseQuery({
@@ -9,7 +16,7 @@ const albumsApi = createApi({
   }),
   endpoints(builder) {
     return {
-      fetchAlbums: builder.query({
+      fetchAlbums: builder.query<AlbumType[], UserType>({
         query: (user: UserType) => {
           return {
             url: '/albums',
