@@ -1,6 +1,6 @@
+import { useAddAlbumMutation, useFetchAlbumsQuery } from '../store';
 import { UserType } from '../store/slices/usersSlice';
 import ExpandablePannel from './ExpandablePannel';
-import { useFetchAlbumsQuery } from '../store';
 import Skeleton from './Skeleton';
 import Button from './Button';
 import React from 'react';
@@ -11,6 +11,12 @@ interface AlbumListProps {
 
 const AlbumList: React.FC<AlbumListProps> = ({ user }) => {
   const { data, error, isLoading } = useFetchAlbumsQuery(user);
+  const [addAlbum, results] = useAddAlbumMutation();
+
+  const handleAddAlbum = (): void => {
+    addAlbum(user);
+    console.log(results);
+  };
 
   let content;
   if (isLoading) {
@@ -30,7 +36,10 @@ const AlbumList: React.FC<AlbumListProps> = ({ user }) => {
 
   return (
     <div>
-      <div>Displaying albums of {user.name}</div>
+      <div>
+        Displaying albums of {user.name}
+        <Button onClick={handleAddAlbum}>+ Add Album</Button>
+      </div>
       <div>{content}</div>
     </div>
   );
