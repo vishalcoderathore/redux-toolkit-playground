@@ -27,9 +27,10 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'import', 'prettier', 'react', 'react-hooks'],
   rules: {
+    'no-unused-vars': 'off',
     '@typescript-eslint/explicit-function-return-type': 'error', // Require explicit return types on functions and class methods
     '@typescript-eslint/explicit-module-boundary-types': 'off', // No need to always enforce explicit module boundary types
-    '@typescript-eslint/no-unused-vars': 'warn', // Warn on variables defined but never used
+    '@typescript-eslint/no-unused-vars': ['warn', { args: 'all', argsIgnorePattern: '^_', varsIgnorePattern: '^_' }], // Warn on variables defined but never used
     '@typescript-eslint/triple-slash-reference': 'off', // Don't use /// <reference>
     'import/default': 'off', // Allow import of default exports even when not present
     'prettier/prettier': 'error', // Mark prettier formatting issues as errors
