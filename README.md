@@ -22,6 +22,43 @@ All data is stored on an outside server using the JSON server library. The serve
 
 The application is designed with bandwidth-constrained users in mind, implementing a lazy fetching strategy that fetches data as it's needed, reducing the load for users on slower internet connections.
 
+Example Photo component when Albums are loaded : 
+
+Component
+    | 
+    | (1) Mounts and calls useFetchPhotosQuery
+    V
+Redux Store (RTK Query)
+    |
+    | (2) Dispatches "fetch request" action
+    V
+Component
+    |
+    | (3) Re-renders with loading state and shows spinner
+    V
+photosApi Middleware
+    |
+    | (4) Sends HTTP request
+    V
+Server
+    |
+    | (5) Returns HTTP response
+    V
+photosApi Middleware
+    |
+    | (6) Dispatches "fulfill request" action
+    V
+Redux Store (RTK Query)
+    |
+    | (7) Updates state with fetched photos
+    V
+Component
+    |
+    | (8) Re-renders with fetched photos and hides spinner
+    V
+User (viewing component)
+
+
 ## Package Description
 
 The `package.json` includes several packages used in the development of this application. Here's a brief description of each package and its role:

@@ -1,6 +1,7 @@
-import { AlbumType, useRemoveAlbumMutation } from '../store/apis/albumApi';
+import { AlbumType, useRemoveAlbumMutation } from '../store/apis/albumsApi';
 import ExpandablePannel from './ExpandablePannel';
 import { GoTrashcan } from 'react-icons/go';
+import PhotosList from './PhotosList';
 import Button from './Button';
 import React from 'react';
 
@@ -23,7 +24,11 @@ const AlbumsListItem: React.FC<AlbumsListItemProps> = ({ album }) => {
       {album.title}
     </>
   );
-  return <ExpandablePannel header={header}>List of photos in the album</ExpandablePannel>;
+  return (
+    <ExpandablePannel header={header}>
+      <PhotosList album={album} />
+    </ExpandablePannel>
+  );
 };
 
 export default AlbumsListItem;
