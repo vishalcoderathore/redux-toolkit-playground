@@ -5,7 +5,7 @@ import config from '../../../config';
 
 export interface PhotoType {
   id: number;
-  title: string;
+  url: string;
   albumId: number;
 }
 
@@ -14,9 +14,21 @@ const photosApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: config.baseUrl,
   }),
+  tagTypes: ['AlbumPhoto', 'Photo'],
   endpoints(builder) {
     return {
       fetchPhotos: builder.query<PhotoType[], AlbumType>({
+        providesTags: (result, _error, album) => {
+          if (!result) {
+            return []; // or return [{ type: 'Album', id: 'LIST' }];
+          }
+          const tags: Array<{ type: 'AlbumPhoto' | 'Photo'; id: number }> = result.map(photo => {
+            // Explicitly define the type of the tags array
+            return { type: 'Photo', id: photo.id };
+          });
+          tags.push({ type: 'AlbumPhoto', id: album.id });
+          return tags;
+        },
         query: (album: AlbumType) => {
           return {
             url: '/photos',
@@ -28,6 +40,7 @@ const photosApi = createApi({
         },
       }),
       addPhoto: builder.mutation<PhotoType, AlbumType>({
+        invalidatesTags: (_result, _error, album) => [{ type: 'AlbumPhoto', id: album.id }],
         query: (album: AlbumType) => {
           return {
             url: '/photos',
@@ -40,6 +53,7 @@ const photosApi = createApi({
         },
       }),
       removePhoto: builder.mutation<void, PhotoType>({
+        invalidatesTags: (_result, _error, photo) => [{ type: 'Photo', id: photo.id }],
         query: (photo: PhotoType) => {
           return {
             method: 'DELETE',

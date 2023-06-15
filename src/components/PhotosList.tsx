@@ -1,21 +1,31 @@
 import { useFetchPhotosQuery, useAddPhotoMutation } from '../store';
 import { AlbumType } from '../store/apis/albumsApi';
+import PhotosListItem from './PhotosListItem';
+import Skeleton from './Skeleton';
 import Button from './Button';
 import React from 'react';
-
 interface PhtotosListProps {
   album: AlbumType;
 }
 
 const PhotosList: React.FC<PhtotosListProps> = ({ album }) => {
-  useFetchPhotosQuery(album);
+  const { data, isFetching, error } = useFetchPhotosQuery(album);
   const [addPhoto, addPhotoResults] = useAddPhotoMutation();
-
-  console.log(addPhotoResults.isLoading);
 
   const handleAddPhoto = (): void => {
     addPhoto(album);
   };
+
+  let content;
+  if (isFetching) {
+    content = <Skeleton className="h-8 w-8" times={4} />;
+  } else if (error) {
+    content = <div>Error fetching photos ...</div>;
+  } else if (data) {
+    content = data.map(photo => {
+      return <PhotosListItem key={photo.id} photo={photo} />;
+    });
+  }
 
   return (
     <div>
@@ -25,6 +35,7 @@ const PhotosList: React.FC<PhtotosListProps> = ({ album }) => {
           + Add Photo
         </Button>
       </div>
+      <div className="mx-8 flex flex-row flex-wrap justify-center">{content}</div>
     </div>
   );
 };
