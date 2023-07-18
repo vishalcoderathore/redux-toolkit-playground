@@ -1,7 +1,7 @@
 import { UserType } from '../store/slices/usersSlice';
 import ExpandablePannel from './ExpandablePannel';
 import { useThunk } from '../hooks/useThunk';
-import { GoTrashcan } from 'react-icons/go';
+import { GoTrash } from 'react-icons/go';
 import { removeUser } from '../store';
 import AlbumList from './AlbumList';
 import Button from './Button';
@@ -21,7 +21,7 @@ const UsersListItem: React.FC<UsersListItemProps> = ({ user }) => {
   const header = (
     <>
       <Button loading={isDeleting} onClick={handleClick} className="mr-3">
-        <GoTrashcan />
+        <GoTrash />
       </Button>
       {error && <div>Error deleting user</div>}
       {user.name}

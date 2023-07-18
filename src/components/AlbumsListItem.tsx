@@ -1,6 +1,6 @@
 import { AlbumType, useRemoveAlbumMutation } from '../store/apis/albumsApi';
 import ExpandablePannel from './ExpandablePannel';
-import { GoTrashcan } from 'react-icons/go';
+import { GoTrash } from 'react-icons/go';
 import PhotosList from './PhotosList';
 import Button from './Button';
 import React from 'react';
@@ -19,7 +19,7 @@ const AlbumsListItem: React.FC<AlbumsListItemProps> = ({ album }) => {
   const header = (
     <>
       <Button className="mr-2" loading={results.isLoading} onClick={handleRemoveAlbum}>
-        <GoTrashcan />
+        <GoTrash />
       </Button>
       {album.title}
     </>

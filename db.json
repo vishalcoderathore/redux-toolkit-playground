@@ -1,5 +1,30 @@
 {
-  "users": [],
+  "users": [
+    {
+      "name": "Terry Gutmann",
+      "id": 1
+    },
+    {
+      "name": "Vanessa Glover",
+      "id": 2
+    },
+    {
+      "name": "Dr. Noel Von",
+      "id": 3
+    },
+    {
+      "name": "Penny Cole",
+      "id": 4
+    },
+    {
+      "name": "Juanita Auer",
+      "id": 5
+    },
+    {
+      "name": "Dr. Olivia Beier",
+      "id": 6
+    }
+  ],
   "albums": [],
   "photos": []
 }
